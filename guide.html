@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Guide - Low Hanging Fruit</title>
+    <meta name="description" content="Complete guide to Low Hanging Fruit. Learn game mechanics, tips, power-ups, and strategies.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F7F9FC;
+            --purple: #A855F7;
+            --green: #22C55E;
+            --orange: #FF8E53;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+        }
+
+        .header-title {
+            font-family: 'Fredoka', sans-serif;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .header-subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .toc h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .guide-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .guide-section h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: var(--purple);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .guide-section p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        /* Info Boxes */
+        .tip-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-left: 4px solid var(--green);
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+        }
+
+        .tip-box strong {
+            color: var(--green);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-left: 4px solid var(--orange);
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+        }
+
+        .warning-box strong {
+            color: var(--orange);
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1rem 0;
+        }
+
+        .danger-box strong {
+            color: var(--primary);
+        }
+
+        /* Risk Level Table */
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .risk-table th,
+        .risk-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .risk-table th {
+            background: var(--dark);
+            color: white;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        .risk-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .risk-table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .risk-1 { color: var(--green); font-weight: 700; }
+        .risk-2 { color: #8BC34A; font-weight: 700; }
+        .risk-3 { color: var(--accent); font-weight: 700; }
+        .risk-4 { color: var(--orange); font-weight: 700; }
+        .risk-5 { color: var(--primary); font-weight: 700; }
+
+        /* Item Grid */
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .item-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .item-card h4 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .item-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .item-card .price {
+            font-size: 0.85rem;
+            color: var(--purple);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+
+            .guide-section {
+                padding: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <img src="app-icon.png" alt="Low Hanging Fruit" class="header-icon">
+                <div>
+                    <div class="header-title">Game Guide</div>
+                    <div class="header-subtitle">Low Hanging Fruit</div>
+                </div>
+            </div>
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h2>📖 Contents</h2>
+            <ul>
+                <li><a href="#basics">1. The Basics</a></li>
+                <li><a href="#trees">2. Trees & Mystery Boxes</a></li>
+                <li><a href="#multipliers">3. Multipliers</a></li>
+                <li><a href="#characters">4. Wizard & Leprechaun</a></li>
+                <li><a href="#revive">5. Revive System</a></li>
+                <li><a href="#coins">6. Coin Economy</a></li>
+                <li><a href="#powerups">7. Power-ups</a></li>
+                <li><a href="#skins">8. Skins & Tunes</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section 1: Basics -->
+        <section id="basics" class="guide-section">
+            <h2>🐧 1. The Basics</h2>
+            <p>Welcome to Low Hanging Fruit! You control a hungry penguin on an endless adventure. Your goal is simple: <strong>collect fruit, avoid bombs, and don't starve!</strong></p>
+            
+            <h3>Controls</h3>
+            <p><strong>Tap</strong> to jump and collect items from trees. <strong>Swipe up</strong> while jumping for a higher jump to reach special items like Mana Bananas, the Wizard, or the Leprechaun that appear above the trees.</p>
+            
+            <h3>The Hunger Bar</h3>
+            <p>Your penguin has a hunger bar that constantly depletes. If it empties completely, your penguin starves and the game ends!</p>
+            
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Collect fruit regularly to keep your hunger bar filled. Don't get too greedy chasing multipliers if your hunger is low!
+            </div>
+            
+            <div class="danger-box">
+                <strong>⚠️ Warning:</strong> As you progress, your penguin moves faster, meaning you pass trees quicker and your hunger depletes faster relative to opportunities. Stay alert in the late game!
+            </div>
+        </section>
+
+        <!-- Section 2: Trees & Mystery Boxes -->
+        <section id="trees" class="guide-section">
+            <h2>🌳 2. Trees & Mystery Boxes</h2>
+            <p>Trees have mystery boxes that can contain fruit, multipliers, or bombs. The risk level displayed on top of each box tells you how likely it is to contain a bomb.</p>
+            
+            <h3>What Mystery Boxes Can Contain</h3>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🍎 Fruit</h4>
+                    <p>Safe and reliable. Fills your hunger bar and adds to your score.</p>
+                </div>
+                <div class="item-card">
+                    <h4>⚡ Multipliers</h4>
+                    <p>Boost your score! Multipliers stack for massive points.</p>
+                </div>
+                <div class="item-card">
+                    <h4>💣 Bombs</h4>
+                    <p>Game over! Unless you have a shield active.</p>
+                </div>
+            </div>
+            
+            <h3>Risk Levels (1-5)</h3>
+            <p>Mystery boxes display a risk level from 1 to 5. Higher risk means a higher chance of a bomb, but also better potential rewards:</p>
+            
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Risk Level</th>
+                        <th>Bomb Chance</th>
+                        <th>Reward Potential</th>
+                        <th>When to Pick</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="risk-1">⚠️ Level 1</td>
+                        <td>Very Low</td>
+                        <td>Low</td>
+                        <td>Playing it safe, prevent hunger</td>
+                    </tr>
+                    <tr>
+                        <td class="risk-2">⚠️⚠️ Level 2</td>
+                        <td>Low</td>
+                        <td>Moderate</td>
+                        <td>Still relatively safe</td>
+                    </tr>
+                    <tr>
+                        <td class="risk-3">⚠️⚠️⚠️ Level 3</td>
+                        <td>Medium</td>
+                        <td>Good</td>
+                        <td>Balanced risk/reward</td>
+                    </tr>
+                    <tr>
+                        <td class="risk-4">⚠️⚠️⚠️⚠️ Level 4</td>
+                        <td>High</td>
+                        <td>High</td>
+                        <td>For risk-takers</td>
+                    </tr>
+                    <tr>
+                        <td class="risk-5">⚠️⚠️⚠️⚠️⚠️ Level 5</td>
+                        <td>Very High</td>
+                        <td>Very High</td>
+                        <td>Maximum danger, maximum reward!</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> Higher risk boxes have better multipliers. If you have a shield active, go for Level 5 boxes!
+            </div>
+        </section>
+
+        <!-- Section 3: Multipliers -->
+        <section id="multipliers" class="guide-section">
+            <h2>⚡ 3. Multipliers</h2>
+            <p><strong>This is the key to high scores!</strong> Understanding multipliers is essential for competing on the leaderboards.</p>
+            
+            <h3>Two Types of Multipliers</h3>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🔥 Streak Multiplier</h4>
+                    <p>Builds automatically as you collect items without missing. Resets if you miss a tree or take damage.</p>
+                </div>
+                <div class="item-card">
+                    <h4>⚡ Pickup Multiplier</h4>
+                    <p>Found in mystery boxes. Temporarily boosts your score multiplier.</p>
+                </div>
+            </div>
+            
+            <h3>Stacking for Maximum Points</h3>
+            <p>Both multiplier types can stack together. Combining them is the real secret to maximizing your fruit count and climbing the leaderboards!</p>
+            
+            <div class="tip-box">
+                <strong>💡 Strategy:</strong> Build your streak first, then grab pickup multipliers from mystery boxes. The combination is where the real points come from!
+            </div>
+        </section>
+
+        <!-- Section 4: Special Characters -->
+        <section id="characters" class="guide-section">
+            <h2>✨ 4. Wizard & Leprechaun</h2>
+            <p>Sometimes you'll encounter magical characters who appear above the trees. Use <strong>swipe up</strong> to reach them!</p>
+            
+            <h3>🧙‍♂️ The Wizard</h3>
+            <p>The Wizard appears randomly and offers you magical orbs. Choose wisely - not all are beneficial!</p>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🔮 Crystal Gaze</h4>
+                    <p>See the contents of the next 3 mystery boxes before opening them.</p>
+                </div>
+                <div class="item-card">
+                    <h4>☠️ Poison</h4>
+                    <p>Immediately ends your game! Avoid this one.</p>
+                </div>
+                <div class="item-card">
+                    <h4>⭐ Score Multiplier</h4>
+                    <p>Grants a powerful temporary multiplier boost.</p>
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <strong>⚠️ Beware:</strong> The Wizard's poison orb will end your run instantly. Choose carefully!
+            </div>
+            
+            <h3>🍀 The Lucky Leprechaun</h3>
+            <p>The Leprechaun offers you a gamble - a chance to double your fruit... or lose half!</p>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🎯 Win</h4>
+                    <p>Double your current fruit collection!</p>
+                </div>
+                <div class="item-card">
+                    <h4>😅 Lose</h4>
+                    <p>Lose half your current fruit collection.</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 Strategy:</strong> Only take the Leprechaun's gamble when you have a lot of fruit to gain, and your hunger bar is healthy!
+            </div>
+        </section>
+
+        <!-- Section 5: Revive System -->
+        <section id="revive" class="guide-section">
+            <h2>❤️ 5. Revive System</h2>
+            <p>When your penguin dies (from a bomb or starvation), you get a chance to continue!</p>
+            
+            <h3>How Reviving Works</h3>
+            <p>After death, you can choose to revive and continue your run. You have two options:</p>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>📺 Watch an Ad</h4>
+                    <p>Watch a short video ad to revive for free. Limited to 3 times per day.</p>
+                </div>
+                <div class="item-card">
+                    <h4>🪙 Use Coins</h4>
+                    <p>Spend coins to revive instantly.</p>
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <strong>⚠️ Important:</strong> If you revive, you <strong>cannot earn coins</strong> from that run! Your fruit will no longer convert to coins at the end. Use revives strategically for high score attempts, not coin farming.
+            </div>
+        </section>
+
+        <!-- Section 6: Coin Economy -->
+        <section id="coins" class="guide-section">
+            <h2>🪙 6. Coin Economy</h2>
+            <p>Coins are the currency used to buy power-ups, skins, and tunes in the shop.</p>
+            
+            <h3>Earning Coins</h3>
+            <p>At the end of each run (without reviving), your collected fruit converts to coins:</p>
+            <p style="text-align: center; font-family: 'Fredoka', sans-serif; font-size: 1.3rem; color: var(--purple); margin: 1rem 0;"><strong>50 Fruit = 1 Coin 🪙</strong></p>
+            
+            <h3>Other Ways to Earn</h3>
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🎁 Daily Bonus</h4>
+                    <p>Spin the daily wheel for free power-ups and coins!</p>
+                </div>
+                <div class="item-card">
+                    <h4>📺 Watch Ads</h4>
+                    <p>Earn bonus coins by watching video ads.</p>
+                </div>
+                <div class="item-card">
+                    <h4>💰 In-App Purchase</h4>
+                    <p>Buy coin packs to support the game!</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ Remember:</strong> Reviving forfeits your coin earnings for that run. If you're farming coins, let the run end naturally!
+            </div>
+        </section>
+
+        <!-- Section 7: Power-ups -->
+        <section id="powerups" class="guide-section">
+            <h2>⚡ 7. Power-ups</h2>
+            <p>Activate power-ups before each run to give your penguin special abilities!</p>
+            
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🛡️ Shield</h4>
+                    <p>Survive one bomb explosion. Perfect for taking risks on high-level mystery boxes!</p>
+                    <div class="price">Cost: 75 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🍀 Lucky Start</h4>
+                    <p>Begin your run with a multiplier already active. Great head start to massively boost fruit scores for the round!</p>
+                    <div class="price">Cost: 100 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🍔 Big Belly</h4>
+                    <p>Increases your hunger capacity by 2 fruit. Stay full longer!</p>
+                    <div class="price">Cost: 50 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🔮 Nostra Pengu</h4>
+                    <p>See what's inside the first 5 mystery boxes before opening them. No more surprises!</p>
+                    <div class="price">Cost: 100 🪙</div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 Combo Tip:</strong> Lucky Start + Shield + Nostra Pengu is a powerful combination! Start with a multiplier, see what's in boxes, AND survive if you guess wrong.
+            </div>
+        </section>
+
+        <!-- Section 8: Skins & Tunes -->
+        <section id="skins" class="guide-section">
+            <h2>🎨 8. Skins & Tunes</h2>
+            <p>Customize your penguin's appearance and the game's music! Each skin comes with its own unique soundtrack, making every skin a complete audio-visual experience.</p>
+            
+            <div class="item-grid">
+                <div class="item-card">
+                    <h4>🐧 Classic Penguin</h4>
+                    <p>The original penguin look with classic arcade tunes.</p>
+                    <div class="price">Default</div>
+                </div>
+                <div class="item-card">
+                    <h4>👑 Golden Penguin</h4>
+                    <p>Majestic golden feathers with royal orchestral music.</p>
+                    <div class="price">500 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🥷 Ninja Penguin</h4>
+                    <p>Silent but deadly. Comes with stealthy Eastern beats.</p>
+                    <div class="price">800 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🎉 Party Penguin</h4>
+                    <p>Life of the party! Features upbeat dance music.</p>
+                    <div class="price">800 🪙</div>
+                </div>
+                <div class="item-card">
+                    <h4>🤖 Robot Penguin</h4>
+                    <p>Beep boop! Futuristic look with electronic synth tracks.</p>
+                    <div class="price">800 🪙</div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 Note:</strong> Skins and tunes are cosmetic only and don't affect gameplay. Collect them all to show off your style and enjoy different music vibes!
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="index.html">Home</a> · 
+            <a href="https://whip-numeric-fb4.notion.site/Privacy-Policy-for-Low-Hanging-Fruit-2ee9a108745380de9a43dfda48c84179" target="_blank">Privacy Policy</a> · 
+            <a href="mailto:lowhangingfruit.game@gmail.com">Contact</a>
+        </p>
+        <p style="margin-top: 1rem;">© 2026 Low Hanging Fruit. All rights reserved.</p>
+    </footer>
+</body>
+</html>
