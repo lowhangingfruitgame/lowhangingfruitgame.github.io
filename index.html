@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -167,7 +165,6 @@
             background: white;
         }
 
-        /* App Icon Display */
         .app-icon-container {
             position: absolute;
             top: 2rem;
@@ -187,7 +184,6 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Features Section */
         .features {
             padding: 5rem 2rem;
             background: rgba(255,255,255,0.95);
@@ -250,12 +246,9 @@
             font-size: 1.05rem;
         }
 
-        /* Skins Showcase Section */
         .skins-section {
             padding: 5rem 2rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
         }
 
         .skins-section .section-title {
@@ -300,7 +293,6 @@
             font-weight: 600;
         }
 
-        /* Risk vs Reward Section */
         .gameplay {
             padding: 5rem 2rem;
             background: white;
@@ -368,7 +360,6 @@
             line-height: 1.6;
         }
 
-        /* Power-ups Section */
         .powerups {
             padding: 5rem 2rem;
             background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
@@ -413,10 +404,6 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
         }
 
-        .powerup-icon {
-            font-size: 3rem;
-        }
-
         .powerup-info {
             text-align: left;
         }
@@ -433,7 +420,6 @@
             font-size: 0.9rem;
         }
 
-        /* Footer */
         footer {
             background: #0d1117;
             padding: 4rem 2rem;
@@ -496,7 +482,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero {
                 padding: 1.5rem;
@@ -534,10 +519,8 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="bg-animation" id="bgAnimation"></div>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="app-icon-container">
             <img src="app-icon.png" alt="Low Hanging Fruit App Icon" class="app-icon">
@@ -559,7 +542,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <h2 class="section-title">Why You'll <span>Love It</span></h2>
         <div class="features-grid">
@@ -586,7 +568,6 @@
         </div>
     </section>
 
-    <!-- Skins Showcase -->
     <section class="skins-section">
         <h2 class="section-title">🎨 Collect Adorable Skins!</h2>
         <div class="skins-grid">
@@ -613,7 +594,6 @@
         </div>
     </section>
 
-    <!-- Gameplay Section -->
     <section class="gameplay">
         <h2 class="section-title">🎲 You Choose Your <span>Fate!</span></h2>
         <div class="risk-reward-container">
@@ -630,7 +610,6 @@
         </div>
     </section>
 
-    <!-- Power-ups Section -->
     <section class="powerups">
         <h2 class="section-title">⚡ Power Up Your Penguin!</h2>
         <div class="powerup-grid">
@@ -665,7 +644,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <img src="app-icon.png" alt="Low Hanging Fruit" class="footer-logo">
@@ -673,18 +651,40 @@
             <div class="footer-links">
                 <a href="guide.html">Game Guide</a>
                 <a href="https://whip-numeric-fb4.notion.site/Privacy-Policy-for-Low-Hanging-Fruit-2ee9a108745380de9a43dfda48c84179" target="_blank">Privacy Policy</a>
-                <a href="/cdn-cgi/l/email-protection#aac6c5ddc2cbc4cdc3c4cdccd8dfc3de84cdcbc7cfeacdc7cbc3c684c9c5c7">Contact &amp; Support</a>
+                <a href="mailto:lowhangingfruit.game@gmail.com">Contact &amp; Support</a>
             </div>
             
             <p class="footer-contact">
                 Questions or feedback?<br>
-                <a href="/cdn-cgi/l/email-protection#74181b031c151a131d1a131206011d005a13151911341319151d185a171b19"><span class="__cf_email__" data-cfemail="503c3f2738313e37393e3736222539247e37313d3510373d31393c7e333f3d">[email&#160;protected]</span></a>
+                <a href="mailto:lowhangingfruit.game@gmail.com">lowhangingfruit.game@gmail.com</a>
             </p>
             
             <p class="copyright">© 2026 Low Hanging Fruit. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Background Animation Script -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const emojis = ['🍎', '🍊', '�
+    <script>
+        const emojis = ['🍎', '🍊', '🍋', '🍇', '🍓', '🍌', '🥝', '🍑', '💎', '⭐', '🪙'];
+        const bgAnimation = document.getElementById('bgAnimation');
+        
+        function createFloatingItem() {
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            item.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = (20 + Math.random() * 15) + 's';
+            item.style.animationDelay = Math.random() * 5 + 's';
+            item.style.fontSize = (1.5 + Math.random() * 1.5) + 'rem';
+            bgAnimation.appendChild(item);
+            
+            setTimeout(() => item.remove(), 35000);
+        }
+        
+        for (let i = 0; i < 12; i++) {
+            setTimeout(createFloatingItem, i * 400);
+        }
+        
+        setInterval(createFloatingItem, 2500);
+    </script>
+</body>
+</html>
